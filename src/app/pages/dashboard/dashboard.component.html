@@ -1,0 +1,55 @@
+
+<div class="header pb-8 pt-5 pt-md-8" style="background-color: #2C3144">
+  <div class="container-fluid">
+    <div class="header-body">
+      <!-- Card stats -->
+
+      <div class="row">
+        <div class="col-xl-3 col-lg-6">
+
+        </div>
+        <div class="col-xl-3 col-lg-6">
+
+
+        </div>
+        <div class="col-xl-3 col-lg-6">
+
+        </div>
+        <div class="col-xl-3 col-lg-6">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container-fluid mt--7">
+  <div class="row">
+    <div class="col">
+
+      <div class="container" *ngIf="user.roles[0]=='ROLE_USER' else elseblocke">
+        <div class="card shadow border-0">
+          <div id="map-canvas" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
+            <ng2-smart-table class="table table-responsive" [settings]="settingsUser" [source]="users" (custom)="onclicktable($event)"></ng2-smart-table>
+          </div>
+        </div>
+      </div>
+      <ng-template class="container" #elseblocke>
+        <button class="btn btn-danger" style="float: right; margin-top: -50px " [routerLink]="['/register']" >Ajouter</button>
+        <div class="card shadow border-0">
+          <div id="map-canvass" class="map-canvas" data-lat="40.748817" data-lng="-73.985428" style="height: 600px;">
+            <ng2-smart-table class="table table-responsive" [settings]="settings" [source]="users" (custom)="onclicktable($event)"></ng2-smart-table>
+          </div>
+        </div>
+
+      </ng-template>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+

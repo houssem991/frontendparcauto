@@ -1,0 +1,246 @@
+
+<div *ngIf="user.roles[0]=='ROLE_USER' else elseblocke">
+  <div id="notfounde">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h1>Oops!</h1>
+      </div>
+      <h2>404 - Page not found</h2>
+      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <a href="/dashboard">Go To Homepage</a>
+    </div>
+  </div>
+</div>
+<ng-template #elseblocke>
+  <div class="header  pb-8 pt-5 pt-md-8" style="background-color: #2C3144">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+
+        <div class="row">
+          <div class="col-xl-3 col-lg-6">
+
+          </div>
+          <div class="col-xl-3 col-lg-6">
+
+
+          </div>
+          <div class="col-xl-3 col-lg-6">
+
+          </div>
+          <div class="col-xl-3 col-lg-6">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container mt--8 pb-5">
+    <!-- Table -->
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            Ajouter Vehicule
+          </div>
+
+          <div class="card-body px-lg-5 py-lg-5">
+
+          <form
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+          >
+
+            <div class="form-group">
+              <label for="name">Immatriculation</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="form.immat"
+                required
+
+                #firstname="ngModel"
+              />
+
+              <div class="alert-danger" *ngIf="f.submitted && firstname.invalid">
+                <div *ngIf="firstname.errors.required">Immatriculation non valide</div>
+
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group">
+              <label for="datedereparation">Date de reparation</label>
+              <input
+                type="date"
+                class="form-control"
+                name="datedereparation"
+                [(ngModel)]="form.datedereparation"
+                required
+
+                #datedereparation="ngModel"
+
+              />
+
+              <div class="alert-danger" *ngIf="f.submitted && datedereparation.invalid">
+                <div *ngIf="datedereparation.errors.required">Date de reparation non valide</div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assurance"> Nom de l'assurance</label>
+              <input
+                type="text"
+                class="form-control"
+                name="age"
+                [(ngModel)]="form.nameassurance"
+
+                #assurance="ngModel"
+                required
+              />
+              <div class="alert-danger" *ngIf="f.submitted && assurance.invalid">
+                <div *ngIf="assurance.errors.required">Nom de l'assurance non valide
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="assurance"> Echeance</label>
+              <input
+                type="date"
+                class="form-control"
+                name="age"
+                [(ngModel)]="form.echeance"
+
+                #echeance="ngModel"
+                required
+              />
+              <div class="alert-danger" *ngIf="f.submitted && echeance.invalid">
+                <div *ngIf="echeance.errors.required">Echeance non valide
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="taxes"> Taxes </label>
+              <input
+                type="number"
+                class="form-control"
+                name="datenaissance"
+                [(ngModel)]="form.taxes"
+                required
+
+                #taxes="ngModel"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && taxes.invalid">
+                <div *ngIf="taxes.errors.required">taxes  non valide
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="etatderep"> etatderep </label>
+              <input
+                type="text"
+                class="form-control"
+                name="etatderep"
+                [(ngModel)]="form.etatderep"
+                required
+
+                #etatderep="ngModel"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && etatderep.invalid">
+                <div *ngIf="etatderep.errors.required">taxes  non valide
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="vignette"> Vignette </label>
+              <input
+                type="text"
+                class="form-control"
+                name="vignette"
+                [(ngModel)]="form.vignette"
+                required
+
+                #vignette="ngModel"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && vignette.invalid">
+                <div *ngIf="vignette.errors.required">taxes  non valide
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="montantderep"> montantderep </label>
+              <input
+                type="number"
+                class="form-control"
+                name="montantderep"
+                [(ngModel)]="form.montantderep"
+                required
+
+                #montantderep="ngModel"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && montantderep.invalid">
+                <div *ngIf="montantderep.errors.required">taxes  non valide
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="natderep"> natderep </label>
+              <input
+                type="text"
+                class="form-control"
+                name="natderep"
+                [(ngModel)]="form.natderep"
+                required
+
+                #natderep="ngModel"
+              />
+              <div class="alert-danger" *ngIf="f.submitted && natderep.invalid">
+                <div *ngIf="natderep.errors.required">taxes  non valide
+                </div>
+
+              </div>
+            </div>
+
+
+            <div class="form-group">
+              <button class="btn btn-primary btn-block">Ajouter</button>
+            </div>
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Signup failed!<br/>{{ errorMessage }}
+            </div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful!
+          </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div></ng-template>
+
+

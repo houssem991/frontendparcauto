@@ -1,0 +1,105 @@
+<div class="header bg-gradient-danger py-7 py-lg-8">
+  <div class="container">
+    <div class="header-body text-center mb-7">
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-6">
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="separator separator-bottom separator-skew zindex-100">
+    <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+    </svg>
+  </div>
+</div>
+<!-- Page content -->
+<div class="container mt--8 pb-5">
+  <!-- Table -->
+  <div class="row justify-content-center">
+    <div class="col-lg-6 col-md-8">
+      <div class="card bg-secondary shadow border-0">
+        <div class="card-header bg-white pb-5">
+          Modifier Utlisateur
+        </div>
+        <div class="card-body px-lg-5 py-lg-5">
+
+          <form
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+          >
+            <div class="form-group">
+              <label for="username">Username</label>
+              <input
+                type="text"
+                class="form-control"
+                name="username"
+                [(ngModel)]="form.username"
+                required
+                minlength="3"
+                maxlength="20"
+                #username="ngModel"
+              />
+              <div class="alert-danger" *ngIf="username.errors && f.submitted">
+                <div *ngIf="username.errors.required">Username is required</div>
+                <div *ngIf="username.errors.minlength">
+                  Username must be at least 3 characters
+                </div>
+                <div *ngIf="username.errors.maxlength">
+                  Username must be at most 20 characters
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                name="email"
+                [(ngModel)]="form.email"
+                required
+                email
+                #email="ngModel"
+              />
+              <div class="alert-danger" *ngIf="email.errors && f.submitted">
+                <div *ngIf="email.errors.required">Email is required</div>
+                <div *ngIf="email.errors.email">
+                  Email must be a valid email address
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="role">Role</label>
+
+              <select class="form-control" name="role" id="role" [(ngModel)]="form.role" required role #role="ngModel">
+                <option value="admin">ROLE_ADMIN</option>
+                <option value="user">ROLE_USER</option>
+
+              </select>
+
+              <div class="alert-danger" *ngIf="f.submitted && role.invalid">
+                <div *ngIf="role.errors.required">role non valide</div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-primary btn-block">Modifier</button>
+            </div>
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+               Echec de Modification<br />{{ errorMessage }}
+            </div>
+          </form>
+
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            La modification est avec succes!
+          </div>        </div>
+      </div>
+    </div>
+  </div>
+</div>

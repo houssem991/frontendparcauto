@@ -1,0 +1,181 @@
+
+<div *ngIf="user.roles[0]=='ROLE_DRH' else elseblocke">
+  <div id="notfounde">
+    <div class="notfound">
+      <div class="notfound-404">
+        <h1>Oops!</h1>
+      </div>
+      <h2>404 - Page not found</h2>
+      <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+      <a href="/dashboard">Go To Homepage</a>
+    </div>
+  </div>
+</div>
+<ng-template #elseblocke>
+  <div class="header  pb-8 pt-5 pt-md-8" style="background-color: #2C3144">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+
+        <div class="row">
+          <div class="col-xl-3 col-lg-6">
+
+          </div>
+          <div class="col-xl-3 col-lg-6">
+
+
+          </div>
+          <div class="col-xl-3 col-lg-6">
+
+          </div>
+          <div class="col-xl-3 col-lg-6">
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page content -->
+  <div class="container mt--8 pb-5">
+    <!-- Table -->
+    <div class="row justify-content-center">
+      <div class="col-lg-6 col-md-8">
+        <div class="card bg-secondary shadow border-0">
+          <div class="card-header bg-white pb-5">
+            Modifier Chauffeur
+          </div>
+
+        <div class="card-body px-lg-5 py-lg-5">
+
+
+        <form
+            *ngIf="!isSuccessful"
+            name="form"
+            (ngSubmit)="f.form.valid && onSubmit()"
+            #f="ngForm"
+            novalidate
+          >
+
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input
+                type="text"
+                class="form-control"
+                name="name"
+                [(ngModel)]="form.firstname"
+                required
+
+                #firstname="ngModel"
+              />
+
+              <div class="alert-danger" *ngIf="f.submitted && firstname.invalid">
+                <div *ngIf="firstname.errors.required">Nom non valide</div>
+
+              </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group">
+              <label for="Prenom">Prenom</label>
+              <input
+                type="text"
+                class="form-control"
+                name="familyname"
+                [(ngModel)]="form.lastname"
+                required
+
+                #lastname="ngModel"
+
+              />
+
+              <div class="alert-danger" *ngIf="f.submitted && lastname.invalid">
+                <div *ngIf="lastname.errors.required">Date debut non valide</div>
+
+              </div>
+            </div>
+          <div class="form-group">
+            <label for="cin"> Cin</label>
+            <input
+              type="number"
+              [maxlength]="99999999"
+              class="form-control"
+              name="age"
+              [(ngModel)]="form.cin"
+
+              #cin="ngModel"
+              required
+              [maxlength]="99999999"
+
+            />
+            <div class="alert-danger" *ngIf="f.submitted && cin.invalid">
+              <div *ngIf="cin.errors.required">cin non valide
+              </div>
+
+            </div>
+
+            <label for="datenaissance"> Date de naissance </label>
+            <input
+              type="date"
+              class="form-control"
+              name="datenaissance"
+              [(ngModel)]="form.datenaissance"
+              required
+
+              #datenaissance="ngModel"
+            />
+            <div class="alert-danger" *ngIf="f.submitted && datenaissance.invalid">
+              <div *ngIf="datenaissance.errors.required">Date de naissance non valide
+              </div>
+
+            </div>
+          </div>
+
+          <div class="form-group">
+              <label for="vehicule"> Vehicule </label>
+
+              <select
+                class="form-control"
+                [(ngModel)]="form.idvehicule"
+                required
+
+                #idvehicule="ngModel">
+                <option selected > -----choisir une Vehicule----</option>
+                <option *ngFor="let vehicule of vehicules" value="{{vehicule.id}}">{{vehicule.immat}}</option>
+              </select>
+              <div class="alert-danger" *ngIf="f.submitted && idvehicule.invalid">
+                <div *ngIf="idvehicule.errors.required">Date de naissance  non valide
+                </div>
+
+              </div>
+            </div>
+
+            <div class="form-group">
+              <button class="btn btn-primary btn-block">Modifier</button>
+            </div>
+
+            <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+              Signup failed!<br/>{{ errorMessage }}
+            </div>
+          </form>
+          <div class="alert alert-success" *ngIf="isSuccessful">
+            Your registration is successful!
+          </div>
+
+        </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div></ng-template>
+
+
